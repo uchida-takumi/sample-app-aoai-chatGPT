@@ -1,5 +1,5 @@
  #!/bin/sh
-
+echo 'ここは prepdocs.sh です'
 . ./scripts/loadenv.sh
 
 echo 'Running "prepdocs.py"'
