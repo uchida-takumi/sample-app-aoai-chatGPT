@@ -10,17 +10,20 @@ def set_env(type='azd', env_file='.env', app_name=None, resource_group_name=None
                 if v:        
                     # sh で, azd env set {k} {v} を実行
                     command = f"azd env set {k} {v}"
-                # 以下の az webapp config appsetting set は無意味かもしれない
-                elif type == 'az':
-                    command = "az webapp config appsettings set "
-                    if app_name:
-                        command += f"--name {app_name} "
-                    if subscription_name:
-                        command += f"--subscription {subscription_name} "
-                    if resource_group_name:
-                        command += f"--resource-group {resource_group_name} "
-                    command += f"--settings {k}={v}"
-                os.system(command)
+            # 以下の az webapp config appsetting set は無意味かもしれない
+            elif type == 'az':
+                command = "az webapp config appsettings set "
+                if app_name:
+                    command += f"--name {app_name} "
+                if subscription_name:
+                    command += f"--subscription {subscription_name} "
+                if resource_group_name:
+                    command += f"--resource-group {resource_group_name} "
+                command += f"--settings {k}={v}"
+            else:
+                raise ValueError(f"Invalid type: {type}")
+            os.system(command)
+        return None
 
 if __name__ == "__main__":
      # parse arg

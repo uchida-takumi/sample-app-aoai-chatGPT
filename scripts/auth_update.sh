@@ -1,6 +1,5 @@
  #!/bin/sh
 
-echo 'ここは auth_update.sh です'
 . ./scripts/loadenv.sh
 
 echo 'Running "auth_update.py"'
